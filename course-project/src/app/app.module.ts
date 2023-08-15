@@ -9,6 +9,8 @@ import { RecipeListItemComponent } from './recipe-book/recipe-list-item/recipe-l
 import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
 import { TheHeaderComponent } from './layout/the-header/the-header.component';
 import { RecipesComponent } from './recipe-book/recipes/recipes.component';
+import {NgOptimizedImage} from "@angular/common";
+import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { RecipesComponent } from './recipe-book/recipes/recipes.component';
     RecipeListItemComponent,
     RecipeDetailComponent,
     TheHeaderComponent,
-    RecipesComponent
+    RecipesComponent,
+    ShoppingListItemComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
