@@ -11,6 +11,7 @@
     <app-recipe-list-item
       *ngFor="let recipe of recipes"
       [recipe]="recipe"
+      (selectRecipeListItemEvent)="selectRecipeFromListRequest($event)"
     ></app-recipe-list-item>
   </div>
 </div>

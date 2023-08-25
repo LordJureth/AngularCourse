@@ -11,6 +11,7 @@ import { TheHeaderComponent } from './layout/the-header/the-header.component';
 import { RecipesComponent } from './recipe-book/recipes/recipes.component';
 import {NgOptimizedImage} from "@angular/common";
 import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
+import { DropdownDirective } from './Directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/sh
     RecipeDetailComponent,
     TheHeaderComponent,
     RecipesComponent,
-    ShoppingListItemComponent
+    ShoppingListItemComponent,
+    DropdownDirective
   ],
     imports: [
         BrowserModule,

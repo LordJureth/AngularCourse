@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-the-header',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./the-header.component.css']
 })
 export class TheHeaderComponent {
+  @Output() selectedTab:EventEmitter<string> = new EventEmitter<string>();
 
+  onSelectedTab(selectedTab: string) {
+    this.selectedTab.emit(selectedTab);
+  }
 }
