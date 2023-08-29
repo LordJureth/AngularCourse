@@ -1,5 +1,6 @@
-import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {Ingredient} from "../../models/ingredient.model";
+import {ShoppingListService} from "../../Services/shopping-list.service";
 
 @Component({
   selector: 'app-shopping-list-actions',
@@ -9,9 +10,13 @@ import {Ingredient} from "../../models/ingredient.model";
 export class ShoppingListActionsComponent {
   @ViewChild('ingredientName') ingredientName: ElementRef;
   @ViewChild('ingredientAmount') ingredientAmount: ElementRef;
-  @Output() addNewIngredientEvent: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
 
-  addIngredientRequest() {
+  constructor(
+    private shoppingListService: ShoppingListService
+  ) {
+  }
+
+  addIngredient() {
     if (
       this.ingredientName.nativeElement.value == ''
       || this.ingredientAmount.nativeElement.value == ''
@@ -19,7 +24,7 @@ export class ShoppingListActionsComponent {
       return;
     }
 
-    this.addNewIngredientEvent.emit(
+    this.shoppingListService.addIngredient(
       new Ingredient(
         this.capitalizeFirstLetter(this.ingredientName.nativeElement.value),
         this.ingredientAmount.nativeElement.value,
