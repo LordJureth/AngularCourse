@@ -5,9 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  selectedTab: string = 'recipe';
-  onNavigate(tab: string) {
-    this.selectedTab = tab;
-  }
-}
+export class AppComponent {}

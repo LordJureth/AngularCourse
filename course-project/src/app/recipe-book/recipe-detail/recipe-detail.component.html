@@ -25,9 +25,9 @@
       </button>
 
       <ul class="dropdown-menu">
-        <li><a href="#" (click)="addItemsToShoppingListRequest()">Add To Shopping List</a></li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+        <li><a (click)="addItemsToShoppingListRequest()">Add To Shopping List</a></li>
+        <li><a routerLink="edit">Edit Recipe</a></li>
+        <li><a routerLink="delete">Delete Recipe</a></li>
       </ul>
     </div>
   </div>
