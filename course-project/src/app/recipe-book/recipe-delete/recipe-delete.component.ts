@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Recipe} from "../../../models/recipe.model";
-import {RecipeService} from "../../../Services/recipe.service";
+import {Recipe} from "../../models/recipe.model";
+import {RecipeService} from "../../Services/recipe.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({

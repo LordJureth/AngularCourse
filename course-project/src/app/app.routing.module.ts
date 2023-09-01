@@ -3,8 +3,8 @@ import {NgModule} from "@angular/core";
 import {RecipesComponent} from "./recipe-book/recipes/recipes.component";
 import {ShoppingListComponent} from "./shopping-list/shopping-list/shopping-list.component";
 import {RecipeDetailComponent} from "./recipe-book/recipe-detail/recipe-detail.component";
-import {RecipeEditComponent} from "./recipe-book/recipe-edit/recipe-edit/recipe-edit.component";
-import {RecipeDeleteComponent} from "./recipe-book/recipe-delete/recipe-delete/recipe-delete.component";
+import {RecipeEditComponent} from "./recipe-book/recipe-edit/recipe-edit.component";
+import {RecipeDeleteComponent} from "./recipe-book/recipe-delete/recipe-delete.component";
 
 const routes: Routes = [
   {
