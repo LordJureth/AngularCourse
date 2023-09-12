@@ -1,0 +1,15 @@
+.recipe-action-buttons {
+  display: flex;
+  gap: 2px;
+  justify-content: flex-end;
+}
+
+.recipe-ingredients {
+  display: flex;
+  gap: 5px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: red solid 1px;
+}

@@ -1,18 +1,22 @@
-import {EventEmitter, Injectable} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Recipe} from "../models/recipe.model";
 import {Ingredient} from "../models/ingredient.model";
 import {ShoppingListService} from "./shopping-list.service";
+import {Subject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class RecipeService {
+  recipeChanged: Subject<Recipe[]> = new Subject<Recipe[]>();
+
   constructor(
-    private shoppingListService: ShoppingListService
+    private shoppingListService: ShoppingListService,
+    private router: Router
   ) {
   }
 
   private recipeList: Recipe[] = [
     new Recipe(
-      1,
       'Spaghetti puttanesca',
       'Cook up this classic sauce in one pan, then toss with spaghetti for a simple midweek meal. It\'s budget-friendly too, making it a great meal for the family',
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/puttanesca-cfb4e42.jpg?quality=90&webp=true&resize=440,400',
@@ -32,7 +36,6 @@ export class RecipeService {
       ]
     ),
     new Recipe(
-      2,
       'Cheesy broccoli pasta bake',
       'This creamy broccoli pasta is a speedy, satisfying and affordable meal which you can make in just 30 minutes. Use the grill instead of the oven to save time',
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-197477_10-8d45e07.jpg?quality=90&webp=true&resize=440,400',
@@ -56,7 +59,6 @@ export class RecipeService {
       ]
     ),
     new Recipe(
-      3,
       'Tuna pasta bake',
       'Whip up this cheap treat using store-cupboard ingredients, tinned tuna and sweetcorn',
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-51616_12-796faab.jpg?quality=90&webp=true&resize=440,400',
@@ -81,8 +83,8 @@ export class RecipeService {
     )
   ];
 
-  getRecipeById(id: number): Recipe | undefined {
-    return this.recipeList.find((recipe: Recipe) => recipe.id === id);
+  getRecipe(index: number) {
+    return this.recipeList[index];
   }
 
   getRecipes(): Recipe[] {
@@ -95,5 +97,24 @@ export class RecipeService {
 
   addItemsToShoppingList(ingredients: Ingredient[]): void {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe): void {
+    this.recipeList.push(recipe);
+    this.recipeChanged.next(this.recipeList.slice());
+  }
+
+  updateRecipe(
+    index: number,
+    recipe: Recipe
+  ): void {
+    this.recipeList[index] = recipe;
+    this.recipeChanged.next(this.recipeList.slice());
+  }
+
+  deleteRecipe(itemIndex: number) {
+    this.recipeList.splice(itemIndex, 1);
+    this.recipeChanged.next(this.recipeList.slice());
+    this.router.navigate(['/recipes']).then();
   }
 }

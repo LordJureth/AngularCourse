@@ -4,8 +4,9 @@
     <hr>
     <div class="list-group">
       <app-shopping-list-item
-        *ngFor="let ingredient of ingredients"
+        *ngFor="let ingredient of ingredients, let idx = index"
         [ingredient]="ingredient"
+        (click)="editItem(idx)"
       ></app-shopping-list-item>
     </div>
   </div>

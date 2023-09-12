@@ -10,6 +10,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class RecipeDetailComponent implements OnInit {
   selectedRecipe: Recipe;
+  recipeId: number;
 
   constructor(
     private recipeService: RecipeService,
@@ -19,12 +20,17 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.selectedRecipe = this.recipeService.getRecipeById(+params['id']) ?? this.recipeService.getDefaultRecipe();
+        this.selectedRecipe = this.recipeService.getRecipe(+params['id']) ?? this.recipeService.getDefaultRecipe();
+        this.recipeId = +params['id'];
       }
     );
   }
 
   addItemsToShoppingListRequest() {
     this.recipeService.addItemsToShoppingList(this.selectedRecipe.ingredients);
+  }
+
+  deleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipeId);
   }
 }

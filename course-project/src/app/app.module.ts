@@ -16,7 +16,7 @@ import { ShoppingListService } from "./Services/shopping-list.service";
 import { NgOptimizedImage } from "@angular/common";
 import { DropdownDirective } from './Directives/dropdown.directive';
 import { AppRoutingModule } from "./app.routing.module";
-import {RecipeDeleteComponent} from "./recipe-book/recipe-delete/recipe-delete.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import {RecipeDeleteComponent} from "./recipe-book/recipe-delete/recipe-delete.c
     RecipeListItemComponent,
     RecipeDetailComponent,
     RecipeEditComponent,
-    RecipeDeleteComponent,
     TheHeaderComponent,
     RecipesComponent,
     ShoppingListItemComponent,
@@ -36,7 +35,9 @@ import {RecipeDeleteComponent} from "./recipe-book/recipe-delete/recipe-delete.c
   imports: [
     BrowserModule,
     NgOptimizedImage,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
